@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calculator</title>
+	<style type="text/css">
+		.main
+		{
+			background-color: #fff;
+			height: 470px;
+			width: 300px;
+			margin-top: 170px;
+		}
+		.field
+		{
+			height: 70px;
+			width: 292px;
+			outline: none;
+			text-align: center;
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 20px;
+			border: none;
+			border-radius: 5px;
+			transition: 0.50s ease;
+			background-color: lightgrey;
+		}
+		.field:hover
+		{
+			height: 70px;
+			width: 292px;
+			outline: none;
+			text-align: center;
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 20px;
+			border: none;
+			background-color: lightblue;
+			transition: 0.50s ease;
+		}
+		#symbol
+		{
+			outline: none;
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 20px;
+			height: 80px;
+			width: 72px;
+			cursor:pointer;
+			background-color: cyan;
+			border: none;
+			border-radius: 5px;
+			transition: 0.50s ease;	
+			margin-top: 1px;
+		}
+		#symbol:hover
+		{
+			outline: none;
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 20px;
+			height: 80px;
+			width: 72px;
+			cursor:pointer;
+			background-color: skyblue;
+			border: none;
+			border-radius: 100%;
+			transition: 0.50s ease;
+		}
+		#symbol1
+		{
+			outline: none;
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 20px;
+			height: 80px;
+			width: 147px;
+			cursor:pointer;
+			background-color: cyan;
+			border: none;
+			border-radius: 5px;
+			transition: 0.50s ease;
+		}
+		#symbol1:hover
+		{
+			outline: none;
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 20px;
+			height: 80px;
+			width: 147px;
+			cursor:pointer;
+			background-color: skyblue;
+			border: none;
+			border-radius: 100%;
+			transition: 0.50s ease;
+		}
+		#symbol2
+		{
+			outline: none;
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 20px;
+			height: 80px;
+			width: 147px;
+			margin-right: 1px;
+			cursor:pointer;
+			border: none;
+			background-color: cyan;
+			border-radius: 5px;
+			transition: 0.50s ease;
+			margin-top: 1px;
+		}
+		#symbol2:hover
+		{
+			outline: none;
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 20px;
+			height: 80px;
+			width: 147px;
+			margin-right: 1px;
+			cursor:pointer;
+			background-color: skyblue;
+			border: none;
+			border-radius: 100%;
+			transition: 0.50s ease;
+		}
+		#number
+		{
+			outline: none;
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 20px;
+			height: 80px;
+			width: 72px;
+			cursor:pointer;
+			border: none;
+			background-color: #FFA07A 	;
+			border-radius: 5px;
+			transition: 0.50s ease;
+		}
+		#number:hover
+		{
+			outline: none;
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 20px;
+			height: 80px;
+			width: 72px;
+			cursor:pointer;
+			background-color: orange;
+			border: none;
+			border-radius: 100%;
+			transition: 0.50s ease;
+		}
+		#usropt
+		{
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 15px;
+			outline: none;
+			cursor: pointer;
+			border: none;
+		}
+		body
+        {
+            transition: all 0.50s ease;
+        }
+	</style>
+</head>
+<body style="background-color: #fff;" id="mainbg">
+	<label style="font-family: cursive,Times New Roman,Auto;" id="lbl1">Theme : </label><select id="usropt" onchange="clrchanger()">
+					<option value="#fff">Light</option>
+					<option value="#333">Dark</option>
+				</select>
+	<center>
+		<div class="main" id="maincls">
+			<form name="calc">
+				<input type="text" name="field" class="field" readonly><br/>
+				<input type="button"  id="symbol1" onclick="cdata()" value="CLEAR">
+				<input type="button"  id="symbol" onclick="moddata()" value="%">
+				<input type="button"  id="symbol" onclick="plusdata()" value="+"><br/>
+				<input type="button"  id="number" onclick="sevendata()"value="7">
+				<input type="button"  id="number" onclick="eightdata()" value="8">
+				<input type="button"  id="number" onclick="ninedata()" value="9">
+				<input type="button"  id="symbol" onclick="minusdata()" value="-"><br/>
+				<input type="button"  id="number" onclick="fourdata()" value="4">
+				<input type="button"  id="number" onclick="fivedata()" value="5">
+				<input type="button"  id="number" onclick="sixdata()" value="6">
+				<input type="button"  id="symbol" onclick="muldata()" value="*"><br/>
+				<input type="button"  id="number" onclick="onedata()" value="1">
+				<input type="button"  id="number" onclick="twodata()" value="2">
+				<input type="button"  id="number" onclick="threedata()" value="3">
+				<input type="button"  id="symbol" onclick="divdata()" value="/"><br/>
+				<input type="button"  id="number" onclick="zerodata()" value="0">
+				<input type="button"  id="number" onclick="dotdata()" value=".">
+				<input type="button"  id="symbol2" onclick="ansdata()" value="=">
+			</form>
+		</div><br/><br/>
+		<marquee><b><i>This is created by <a href="https://www.github.com/iprerakgajjar">https://www.github.com/iprerakgajjar</a></i></b></marquee>
+	</center>
+</body>
+<script type="text/javascript">
+	var a1 = 0;
+	var a2 = 0;
+	var a3 = 0;
+	var a4;
+	function f2()
+	{
+		alert("Sorry you can't enter string or change value using Keyboard !");
+	}
+	function clrchanger()
+	{
+		a1 = document.getElementById('usropt').value;
+		if (a1 == "#fff")
+		{
+			document.body.style.backgroundColor=a1;
+			document.body.style.color="#000";
+			document.calc.style.backgroundColor=a1;
+			document.getElementById('usropt').style.backgroundColor="#fff";
+			document.getElementById('usropt').style.color="#000";
+			document.calc.style.transition="0.50s ease";
+			document.getElementById('usropt').style.transition="0.50s ease";
+		}
+		else if( a1 == "#333")
+		{
+			document.body.style.backgroundColor=a1;
+			document.body.style.color="#fff";
+			document.calc.style.backgroundColor="#333";
+			document.getElementById('usropt').style.backgroundColor="#333";
+			document.getElementById('usropt').style.color="#fff";
+			document.calc.style.transition="0.50s ease";
+			document.getElementById('usropt').style.transition="0.50s ease";
+		}
+		else
+		{
+			alert("Something went wrong !");
+		}
+		
+	}
+	function onedata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			document.calc.field.value="1";
+		}
+		else
+		{
+			document.calc.field.value=a11 + "1";
+		}
+	}
+	function twodata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			document.calc.field.value="2";
+		}
+		else
+		{
+			document.calc.field.value=a11 + "2";
+		}
+	}
+	function threedata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			document.calc.field.value="3";
+		}
+		else
+		{
+			document.calc.field.value=a11 + "3";
+		}
+	}
+	function fourdata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			document.calc.field.value="4";
+		}
+		else
+		{
+			document.calc.field.value=a11 + "4";
+		}
+	}
+	function fivedata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			document.calc.field.value="5";
+		}
+		else
+		{
+			document.calc.field.value=a11 + "5";
+		}
+	}
+	function sixdata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			document.calc.field.value="6";
+		}
+		else
+		{
+			document.calc.field.value=a11 + "6";
+		}
+	}
+	function sevendata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			document.calc.field.value="7";
+		}
+		else
+		{
+			document.calc.field.value=a11 + "7";
+		}
+	}
+	function eightdata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			document.calc.field.value="8";
+		}
+		else
+		{
+			document.calc.field.value=a11 + "8";
+		}
+	}
+	function ninedata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			document.calc.field.value="9";
+		}
+		else
+		{
+			document.calc.field.value=a11 + "9";
+		}
+	}
+	function zerodata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			document.calc.field.value="0";
+		}
+		else
+		{
+			document.calc.field.value=a11 + "0";
+		}
+	}
+	function dotdata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			document.calc.field.value="0.";
+		}
+		else
+		{
+			document.calc.field.value=a11 + ".";
+		}
+	}
+	function plusdata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			alert("First enter a value");
+		}
+		else
+		{
+			a1 = parseInt(document.calc.field.value);
+			document.calc.field.value="";
+			a4 = "+";
+		}
+	}
+	function minusdata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			alert("First enter a value");
+		}
+		else
+		{
+			a1 = parseInt(document.calc.field.value);
+			document.calc.field.value="";
+			a4 = "-";
+		}
+	}
+	function muldata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			alert("First enter a value");
+		}
+		else
+		{
+			a1 = parseInt(document.calc.field.value);
+			document.calc.field.value="";
+			a4 = "*";
+		}
+	}
+	function divdata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			alert("First enter a value");
+		}
+		else
+		{
+			a1 = parseInt(document.calc.field.value);
+			document.calc.field.value="";
+			a4 = "/";
+		}
+	}
+	function moddata()
+	{
+		a11 = document.calc.field.value;
+		if (a11 == "")
+		{
+			alert("First enter a value");
+		}
+		else
+		{
+			a1 = parseInt(document.calc.field.value);
+			document.calc.field.value="";
+			a4 = "%";
+		}
+	}
+	function ansdata()
+	{
+		a2 = parseInt(document.calc.field.value);
+		if(a4 == "+")
+		{
+			a3 = a1 + a2;
+			document.calc.field.value = a3;
+		}
+		else if(a4 == "-")
+		{
+			a3 = a1 - a2;
+			document.calc.field.value = a3;
+		}
+		else if(a4 == "*")
+		{
+			a3 = a1 * a2;
+			document.calc.field.value = a3;
+		}
+		else if(a4 == "/")
+		{
+			a3 = a1 / a2;
+			document.calc.field.value = a3;
+		}
+		else if(a4 == "%")
+		{
+			a3 = a1 % a2;
+			document.calc.field.value = a3;
+		}
+		else if(isNaN(a2) == true)
+		{
+			document.calc.field.value="";
+		}
+
+	}
+	function cdata()
+	{
+		document.calc.field.value="";
+	}
+
+</script>
+</html>
