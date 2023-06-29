@@ -153,6 +153,14 @@
 			cursor: pointer;
 			border: none;
 		}
+		#usropt2
+		{
+			font-family: cursive,Times New Roman,Auto;
+			font-size: 15px;
+			outline: none;
+			cursor: pointer;
+			border: none;
+		}
 		body
         {
             transition: all 0.50s ease;
@@ -164,6 +172,10 @@
 					<option value="#fff">Light</option>
 					<option value="#333">Dark</option>
 				</select>
+				<!--<label style="font-family: cursive,Times New Roman,Auto;" id="lbl2">Save History? (Beta) : </label><select id="usropt2"> 
+					<option>Yes</option>
+					<option>No</option>
+				</select>-->
 	<center>
 		<div class="main" id="maincls">
 			<form name="calc">
@@ -187,8 +199,7 @@
 				<input type="button"  id="number" onclick="dotdata()" value=".">
 				<input type="button"  id="symbol2" onclick="ansdata()" value="=">
 			</form>
-		</div><br/><br/>
-		<marquee><b><i>This is created by <a href="https://www.github.com/iprerakgajjar">https://www.github.com/iprerakgajjar</a></i></b></marquee>
+		</div>
 	</center>
 </body>
 <script type="text/javascript">
@@ -196,9 +207,45 @@
 	var a2 = 0;
 	var a3 = 0;
 	var a4;
-	function f2()
+	var bgclr = localStorage.getItem('clr');
+	//alert(bgclr);
+	if(bgclr == "")
 	{
-		alert("Sorry you can't enter string or change value using Keyboard !");
+			document.body.style.backgroundColor = "#fff";
+			localStorage.setItem('clr','#fff');
+			document.getElementById('usropt2').style.transition="0.50s ease";
+			let dropdown = document.getElementById('usropt');
+			dropdown.value="#fff";
+	}
+	else
+	{
+		if(bgclr == "#000")
+		{
+			
+			document.body.style.backgroundColor = "#333";
+			document.body.style.color = "#fff";
+			document.calc.style.backgroundColor = "#333";
+			document.getElementById('usropt').style.backgroundColor = "#333";
+			document.getElementById('usropt').style.color = "#fff";
+			document.body.style.transition = "0.50s ease";
+			document.calc.style.transition="0.50s ease";
+			document.getElementById('usropt').style.transition = "0.50s ease";
+			let dropdown = document.getElementById('usropt');
+			dropdown.value="#333";
+		}
+		else
+		{
+			document.body.style.backgroundColor = "#fff";
+			document.body.style.color = "#000";
+			document.calc.backgroundColor = "#fff";
+			document.getElementById('usropt').style.backgroundColor = "#fff";
+			document.getElementById('usropt').style.color = "#000";
+			document.body.style.transition = "0.50s ease";
+			document.calc.style.transition="0.50s ease";
+			document.getElementById('usropt').style.transition = "0.50s ease";
+			let dropdown = document.getElementById('usropt');
+			dropdown.value = "#fff";
+		}
 	}
 	function clrchanger()
 	{
@@ -212,6 +259,10 @@
 			document.getElementById('usropt').style.color="#000";
 			document.calc.style.transition="0.50s ease";
 			document.getElementById('usropt').style.transition="0.50s ease";
+			/*document.getElementById('usropt2').style.backgroundColor="#fff";
+			document.getElementById('usropt2').style.color="#000";
+			document.getElementById('usropt2').style.transition="0.50s ease";*/
+			localStorage.setItem('clr','#fff');
 		}
 		else if( a1 == "#333")
 		{
@@ -220,8 +271,12 @@
 			document.calc.style.backgroundColor="#333";
 			document.getElementById('usropt').style.backgroundColor="#333";
 			document.getElementById('usropt').style.color="#fff";
+			/*document.getElementById('usropt2').style.backgroundColor="#333";
+			document.getElementById('usropt2').style.color="#fff";*/
 			document.calc.style.transition="0.50s ease";
 			document.getElementById('usropt').style.transition="0.50s ease";
+			//document.getElementById('usropt2').style.transition="0.50s ease";
+			localStorage.setItem('clr','#000');
 		}
 		else
 		{
